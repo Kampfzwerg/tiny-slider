@@ -1514,7 +1514,7 @@ export var tns = function(options) {
     }
 
     var width = fixedWidth ? (fixedWidth + gutter) * slideCount : slidePositions[slideCount],
-        vp = edgePadding ? viewport + edgePadding * 2 : viewport + gutter;
+        vp = edgePadding ? viewport + edgePadding : viewport + gutter;
 
     if (center) {
       vp -= fixedWidth ? (viewport - fixedWidth) / 2 : (viewport - (slidePositions[index + 1] - slidePositions[index] - gutter)) / 2;
@@ -1604,7 +1604,10 @@ export var tns = function(options) {
     if (frozen) { return; }
 
     // remove edge padding from inner wrapper
-    if (edgePadding) { innerWrapper.style.margin = '0px'; }
+    if (edgePadding) {
+      innerWrapper.style.margin = '0px';
+      innerWrapper.style.marginLeft = edgePadding + 'px';
+    }
 
     // add class tns-transparent to cloned slides
     if (cloneCount) {
